@@ -1,12 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// not finished
+/*
+Given N elements (2≤ N ≤100,000) on a straight line at positions >=0, <=1e9
+The distance of a subset of N elements is defined to be the minimum distance between two elements.
+Find the subset of N given elements containing exactly C elements such that the distance is maximal.
+*/
 
 const int maxn = 100001;
+const int maxx = 1000000000;
 int n, c, x[maxn];
 
+bool check(int d) {
+    // check if there exist c points which pairwise distance is >= d
+    int ind = 0;
+    int num = 1;
+    for (int i = 1; i < n; ++i) {
+        if (x[i] - x[ind] >= d) {
+            ind = i;
+            ++num;
+            if (num >= c) return true;
+        }
+    }
+    return false;
+}
+
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
     int t;
     cin >> t;
     while (t--) {
@@ -15,6 +38,14 @@ int main() {
         for (int i = 0; i < n; ++i) {
             cin >> x[i];
         }
-        
+        sort(x, x + n);
+
+        int k = 1;
+        // binary search on the answer k
+        for (int b = maxx / 2; b >= 1; b /= 2)
+            while (k + b <= x[n - 1] && check(k + b)) k += b;
+        cout << k << endl;
     }
+    
+    return 0;
 }
