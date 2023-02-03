@@ -1,0 +1,13 @@
+1/ runtime error:	nhầm lẫn/dùng đan xen int và long long
+			dùng quá phạm vi khai báo mảng/vector
+2/ lưu giá trị trong một khoảng lớn xác định:
+	dùng map thay cho vector<int> tmp(1e6)
+3/ nC2= 1 + 2 + 3 + ... + (n-1) + n
+4/ Kích thước test=tổng các n, ko phải max mỗi case*số case
+5/ nCk: precal 1!,2!,3!,...
+6/ interactive: flush sau mỗi lần cout, endline
+7/ chú ý khi số âm % n
+8/ bit:
+#define bit(x, k) (1ll&((x) >> (k)))
+#define on(x, k) ((x)|(1ll << (k)))
+#define off(x, k) ((x)&~(1ll << (k)))

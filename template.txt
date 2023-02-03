@@ -1,0 +1,40 @@
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+#define fi first
+#define se second
+#define el <<"\n"
+#define sp <<" "
+#define sps <<" "<<
+
+#define FILE_NAME ""
+#define DEBUG_MODE
+
+void OFFLINE() {
+#ifndef ONLINE_JUDGE
+    freopen(FILE_NAME ".in", "r", stdin);
+    freopen(FILE_NAME ".out", "w", stdout);
+#endif
+}
+
+void DEBUG(function<void()> t) {
+#ifndef ONLINE_JUDGE
+#ifdef DEBUG_MODE
+    cout << "\n*****DEBUG ZONE*****\n";
+    t();
+    cout << "\n*****END OF DEBUG ZONE*****\nReal output here:\n";
+#endif
+#endif
+}
+
+int main() {
+    OFFLINE();
+    ios_base::sync_with_stdio(0);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+}
