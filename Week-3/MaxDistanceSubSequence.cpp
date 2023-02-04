@@ -40,11 +40,11 @@ int main() {
         }
         sort(x, x + n);
 
-        int k = 1;
+        int k = 1; // init low value of binary search
         // binary search on the answer k
-        for (int b = maxx / 2; b >= 1; b /= 2)
+        for (int b = maxx / 2; b >= 1; b /= 2) // b: jump step
             while (k + b <= x[n - 1] && check(k + b)) k += b;
-        cout << k << endl;
+        cout << k << endl; // k: max int st check(k) == true
     }
     
     return 0;
