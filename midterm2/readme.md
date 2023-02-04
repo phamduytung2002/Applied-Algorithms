@@ -11,3 +11,5 @@ create submit files: <StudentID>_BAI[i].cpp (need to change StudentID in run.py)
 -d: debug mode (activate DEBUG function)
 
 -t: number of test case, default = 5
+
+becareful with '\n' at file ending

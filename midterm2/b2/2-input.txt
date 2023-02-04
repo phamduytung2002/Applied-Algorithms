@@ -1,0 +1,103 @@
+100
+69 66 41 81 47 25 13 31 83 80 95 90 48 97 78 66 76 55 87 66 65 39 45 76 16 64 57 76 3 100 100 3 32 83 50 7 78 67 91 25 20 48 7 42 27 77 34 72 45 23 3 13 35 10 90 8 67 49 54 26 63 93 63 79 64 1 91 6 62 81 48 14 91 100 55 85 78 86 43 69 55 26 19 74 40 60 56 51 33 50 59 100 91 68 82 87 77 14 21 73 
+insert 1
+delete-max
+delete-max
+insert 27
+delete-max
+delete-max
+insert 58
+delete-max
+delete-max
+delete-max
+delete-max
+insert 72
+insert 29
+insert 74
+insert 21
+delete-max
+insert 61
+insert 8
+insert 93
+insert 44
+delete-max
+insert 70
+delete-max
+insert 20
+delete-max
+insert 5
+insert 86
+delete-max
+delete-max
+insert 74
+insert 2
+delete-max
+delete-max
+delete-max
+delete-max
+delete-max
+delete-max
+delete-max
+insert 87
+insert 43
+delete-max
+delete-max
+delete-max
+insert 1
+insert 61
+delete-max
+insert 82
+delete-max
+insert 27
+insert 69
+delete-max
+delete-max
+insert 17
+delete-max
+delete-max
+delete-max
+insert 29
+insert 38
+delete-max
+delete-max
+insert 45
+delete-max
+delete-max
+delete-max
+insert 5
+delete-max
+delete-max
+insert 43
+delete-max
+insert 19
+insert 5
+delete-max
+insert 67
+delete-max
+insert 18
+insert 22
+delete-max
+delete-max
+insert 60
+delete-max
+insert 26
+insert 70
+insert 8
+insert 39
+delete-max
+delete-max
+insert 25
+insert 79
+delete-max
+insert 6
+delete-max
+delete-max
+insert 34
+delete-max
+insert 99
+delete-max
+delete-max
+delete-max
+delete-max
+delete-max
+*

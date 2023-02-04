@@ -1,0 +1,13 @@
+10
+10 9 10 1 8 8 7 10 10 6 
+insert 9
+delete-max
+delete-max
+delete-max
+delete-max
+insert 5
+delete-max
+delete-max
+delete-max
+insert 6
+*

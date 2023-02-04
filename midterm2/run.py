@@ -42,9 +42,9 @@ numcorrect = 0
 for i in range(1, n_test+1):
     print(f'***Test {i}:')
     begin_time = time.time()
-    os.system(f'a.exe' + c + f' b{config.filename}/t{i}in.txt')
+    os.system(f'a.exe' + c + f' b{config.filename}\{i}-input.txt')
     end_time = time.time()
-    res = filecmp.cmp(f'b{config.filename}/t{i}in.txt.out', f'b{config.filename}/t{i}out.txt')
+    res = filecmp.cmp(f'b{config.filename}\{i}-result.txt', f'b{config.filename}\{i}-input.txt.out')
     if res:
         numcorrect += 1
         print('AC!')
