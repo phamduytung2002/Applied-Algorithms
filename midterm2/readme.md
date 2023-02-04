@@ -1,10 +1,12 @@
 # Template for midterm test
 
-create submit files: <StudentID>_BAI[i].cpp (need to change StudentID in run.py)
+Create submit files: <StudentID>_BAI[i].cpp (need to change StudentID in run.py)
 
 ## run test cases on local
 
-> run.py [#problem] -l -d -t [number of test case]
+> cd midterm2
+
+> run.py [#problem] -l -d
 
 -l: run on local (input from file, need to change test case name in run.py)
 
@@ -12,4 +14,4 @@ create submit files: <StudentID>_BAI[i].cpp (need to change StudentID in run.py)
 
 -t: number of test case, default = 5
 
-becareful with '\n' at file ending
+! Becareful with '\n' at file ending !
