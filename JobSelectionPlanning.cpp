@@ -4,8 +4,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// not finished yet
-
 /*
     Given n jobs J = {1,. . .,n}. Each job i has a deadline d(i)
     and associated profit p(i) if the job is finished before the
@@ -37,7 +35,10 @@ int main() {
     }
     sort(dat, dat + n, greater<pii>());
     for (int i = 0; i < n; ++i) {
-        auto u = upper_bound(untakendate.begin(), untakendate.end(), dat[i].d);
+        auto u = untakendate.upper_bound(dat[i].d);
+        // careful:
+        // set.upper_bound(...) : O(log n)
+        // upper_bound(set.begin(), set.end(), ...) : O(n)
         --u;
         if (*u != 0) {
             untakendate.erase(u);
