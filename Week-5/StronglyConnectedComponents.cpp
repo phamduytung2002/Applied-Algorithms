@@ -1,50 +1,48 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-const int maxn = 1e5 + 1;
-int n, m;
-vector<vector<int>> edges(maxn, vector<int>(0));
-int low[maxn], tin[maxn], cnt = 1;
-bool visited[maxn];
-stack<int> s;
-int res = 0;
+const int maxN = 100010;
 
-void dfs(int v) {
-    // visited[v] = true;
-    tin[v] = cnt;
-    low[v] = cnt;
-    ++cnt;
-    for (int child : edges[v]) {
-        if(visited[child]) continue;
-        if (!tin[child]) {
-            dfs(child);
-            low[v] = min(low[v], low[child]);
-        } else
-            low[v] = min(low[v], tin[child]);
+int n, m;
+int timeDfs = 0, scc = 0;
+int low[maxN], num[maxN];
+bool deleted[maxN];
+vector <int> g[maxN];
+stack <int> st;
+
+void dfs(int u) {
+    num[u] = low[u] = ++timeDfs;
+    st.push(u);
+    for (int v : g[u]) {
+    	if (deleted[v]) continue;
+        if (!num[v]){
+            dfs(v);
+            low[u] = min(low[u], low[v]);
+        }
+        else low[u] = min(low[u], num[v]);
     }
-    if (low[v] == tin[v]) {
-        ++res;
-        int u;
+    if (low[u] == num[u]) {
+        scc++;
+        int v;
         do {
-            u = s.top();
-            s.pop();
-            visited[u] = true;
-        } while (u != v);
+            v = st.top(); 
+            st.pop();
+            deleted[v] = true;
+        }
+        while (v != u);
     }
 }
 
 int main() {
     cin >> n >> m;
-    for (int i = 0; i < m; ++i) {
+    for (int i = 1; i <= m; i++) {
         int u, v;
         cin >> u >> v;
-        edges[u].push_back(v);
+        g[u].push_back(v);
     }
-    for (int i = 1; i <= n; ++i) {
-        if (!tin[i]) {
-            dfs(i);
-        }
-    }
-    cout << res << endl;
-    return 0;
+    for (int i = 1; i <= n; i++)
+        if (!num[i]) dfs(i);
+
+    cout << scc;
 }
