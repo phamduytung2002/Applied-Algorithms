@@ -1,18 +1,33 @@
+"""
+    Auto judge for cpp solutions
+    Used in command line: python run.py [-l] [-d] [-tl TIMELIMIT]
+        -l: compile with local mode (file input and output)
+        -d: compile with debug mode (print things)
+"""
+
 import os
 import argparse
 import filecmp
 import time
+import sys
 
 
-def removeEndlineAtEndFile(file):
-    my_file =  open(file, "r+")
-    content = my_file.read()
-    content = content.rstrip('\n')
-    my_file.seek(0)
+def removeendlineatendfile(filetoremove: str):
+    """
+        Remove '\\n' at the end of output files
+        Parameters:
+            input:
+                filetoremove: path string
+            output:
+                None
+    """
+    with open(filetoremove, "r+", encoding="utf-8") as my_file:
+        content = my_file.read()
+        content = content.rstrip('\n')
+        my_file.seek(0)
 
-    my_file.write(content)
-    my_file.truncate()
-    my_file.close()
+        my_file.write(content)
+        my_file.truncate()
 
 
 parser = argparse.ArgumentParser()
@@ -31,54 +46,53 @@ debug = config.debug
 probNum = config.filename
 
 if offline and debug:
-    c = ' a'
+    C = ' a'
 elif not offline and debug:
-    c = ' b'
+    C = ' b'
 elif offline and not debug:
-    c = ' c'
+    C = ' c'
 elif not offline and not debug:
-    c = ' d'
+    C = ' d'
 else:
-    c = ''
+    C = ''
 
 
 os.system(f'g++ -o a.exe {file}.cpp')
 
 if not os.path.exists('a.exe'):
     print('!!Compile error!!')
-    exit()
+    sys.exit()
 
-n_test = 0
-n_correct = 0
+N_TEST = 0
+N_CORRECT = 0
 for testFileInput in os.listdir(f'b{probNum}'):
     if testFileInput.find('in') != -1 and \
        not testFileInput.endswith('.out'):
-        # if there are another patterns between input, output and 
+        # if there are another patterns between input, output and
         # your results, fix the below lines
         testFileInput = f'b{probNum}\\' + testFileInput
         testFileOutput = testFileInput.replace('input', 'result')
         myOutputFile = testFileInput + ".out"
 
-        n_test += 1
-        print(f'***Test {n_test}:')
+        N_TEST += 1
+        print(f'***Test {N_TEST}:')
 
         begin_time = time.time()
-        os.system(f'a.exe' + c + ' ' + testFileInput)
+        os.system('a.exe' + C + ' ' + testFileInput)
         end_time = time.time()
         runTime = end_time - begin_time
 
-        removeEndlineAtEndFile(testFileOutput)
-        removeEndlineAtEndFile(myOutputFile)
+        removeendlineatendfile(testFileOutput)
+        removeendlineatendfile(myOutputFile)
         res = filecmp.cmp(testFileOutput, myOutputFile)
 
         if res:
-            n_correct += 1
+            N_CORRECT += 1
             print('AC!')
         else:
             print('!WA')
         if runTime > 1.:
             print('!!TLE!!')
         print(f'time: {runTime}')
-print(f'Total correct: {n_correct}/{n_test}')
-
+print(f'Total correct: {N_CORRECT}/{N_TEST}')
 os.remove('a.exe')

@@ -2,35 +2,34 @@
 
 using namespace std;
 
-const int maxN = 100010;
+const int maxN = 1e5 + 1;
 
 int n, m;
 int timeDfs = 0, scc = 0;
 int low[maxN], num[maxN];
 bool deleted[maxN];
-vector <int> g[maxN];
-stack <int> st;
+vector<int> g[maxN];
+stack<int> st;
 
 void dfs(int u) {
     num[u] = low[u] = ++timeDfs;
     st.push(u);
     for (int v : g[u]) {
-    	if (deleted[v]) continue;
-        if (!num[v]){
+        if (deleted[v]) continue;
+        if (!num[v]) {
             dfs(v);
             low[u] = min(low[u], low[v]);
-        }
-        else low[u] = min(low[u], num[v]);
+        } else
+            low[u] = min(low[u], num[v]);
     }
     if (low[u] == num[u]) {
         scc++;
         int v;
         do {
-            v = st.top(); 
+            v = st.top();
             st.pop();
             deleted[v] = true;
-        }
-        while (v != u);
+        } while (v != u);
     }
 }
 
